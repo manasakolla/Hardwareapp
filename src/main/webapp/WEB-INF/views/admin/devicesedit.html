@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/layout::head-fragment">
+    
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/layout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->
+		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/layout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->
+          	
+          	<h1>Edit team page</h1>
+            <p>Here you can edit the existing team.</p>
+            <p>${message}</p>
+            <form:form method="POST" commandname="team" action="${pageContext.request.contextPath}/devicesadd/edit/${devicesadd.id}.html">
+            <table>
+            <tbody>
+	        <tr>
+		    <td>Name:</td>
+		    <td><form:input path="name"></form:input></td>
+	         </tr>
+	         <tr>
+		     <td>description:</td>
+		   <td><form:input path="description"></form:input></td>
+	      </tr>
+	      <tr>
+		  <td><input value="Edit" type="submit"></td>
+		  <td></td>
+	</tr>
+</tbody>
+</table>
+</form:form>
+
+<p><a href="${pageContext.request.contextPath}/devices.html">Devices</a></p>
+          	
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer th:include="common/layout::footer-fragment">
+          
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <div th:include="common/layout::commonscripts-fragment">
+    	
+    </div>
+    
+  </body>
+</html>

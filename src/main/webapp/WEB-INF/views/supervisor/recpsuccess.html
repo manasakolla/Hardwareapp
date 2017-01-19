@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/recplayout::head-fragment">
+    
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/recplayout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->
+		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/recplayout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->
+          	
+          	<h2>Repair device added successfully</h2>
+        <a href="/adddeviceform" th:href="@{/adddeviceform}"> <span class="btn btn-primary pull-right">Add device</span></a>
+          	
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer th:include="common/recplayout::footer-fragment">
+          
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <div th:include="common/recplayout::commonscripts-fragment">
+    	
+    </div>
+    
+  </body>
+</html>

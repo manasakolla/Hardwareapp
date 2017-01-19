@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+            <!-- widget content -->
+            <div class="widget-body">
+
+                <form class="form-horizontal" id="viewUserForm"  th:object="${qsUser}" method="post" novalidate="novalidate">
+                    <legend>User Information</legend>
+                    <br/>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Device Type</label>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" placeholder="johndoe" name="devicetype" id="devicetype" th:value="*{devicetype}" disabled="disabled"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Problem</label>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-prepend fa fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="John" name="problem" id="problem" th:value="*{problem}" disabled="disabled"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Assigned date</label>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-prepend fa fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Doe" name="assigneddate" id="assigneddate" th:value="*{assigneddate}" disabled="disabled"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Status</label>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-prepend fa fa fa-envelope-o"></i></span>
+                                    <input type="text" class="form-control" placeholder="john.doe@yahoo.com" name="status" id="status" th:value="*{status}" disabled="disabled"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Repare Info</label>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-prepend fa fa fa-envelope-o"></i></span>
+                                    <input type="text" class="form-control" placeholder="john.doe@yahoo.com" name="status" id="status" th:value="*{status}" disabled="disabled"/>
+                                </div>
+                            </div>
+                        </div>
+                       <!--  <div class="form-group">
+                            <label class="col-md-3 control-label">Language</label>
+                            <div class="col-md-5">
+                                <input class="form-control" placeholder="Type something..." type="text"  list="list" th:value="*{language}" disabled="disabled"/>
+                                <datalist id="list">
+                                    <option value="English" th:each="language : ${languages}" th:value="${language}" th:utext="${language}">English</option>
+                                </datalist>
+                            </div>
+                        </div> -->
+
+                    </fieldset>
+                </form>
+                <legend>Assigned Profiles</legend>
+                <table class="table table-striped table-bordered table-hover" id="profilesTable">
+                    <thead>
+                    <tr>
+                        <th colspan="2">
+                            <span th:text="#{profileId.LABEL}">Profile ID</span>
+                        </th>
+                        <th colspan="3">
+                            <span th:text="#{profileName.LABEL}">Profile Name</span>
+                        </th>
+                        <th colspan="3">
+                            <span th:text="#{profileCode.LABEL}">Profile Code</span>
+                        </th>
+                        <th colspan="6">
+                            <span th:text="#{profileDesc.LABEL}">Profile Description</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${not #lists.isEmpty(qsUser.profiles)}" th:each="profile,rowStat : ${qsUser.profiles}" th:with="uuid=${profile.profileId}">
+                        <td colspan="2">
+                            <span th:id="${'profileId' + rowStat.index}" data-type="text" data-name="profileId"  th:utext="${profile.profileId}">1</span>
+                        </td>
+                        <td colspan="3">
+                            <span th:id="${'profileName' + rowStat.index}" data-type="text" data-name="profileName"   th:utext="${profile.profileName}">Admin</span>
+                        </td>
+                        <td colspan="3">
+                            <span th:id="${'profileCode' + rowStat.index}" data-type="text" data-name="profileCode"   th:utext="${profile.profileCode}">ADM</span>
+                        </td>
+                        <td colspan="6">
+                            <span th:id="${'profileDesc' + rowStat.index}" data-type="text" data-name="profileDesc"  th:utext="${profile.profileDesc}">This profile can have all admin privileges</span>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(qsUser.profiles)}">
+                        <td colspan="4">
+                        </td>
+                        <td colspan="10">
+                            <strong>No profiles are assigned</strong>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- end widget content -->
+        </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/testlayout::head-fragment">    
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">      
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/testlayout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/testlayout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->  
+                  	        	
+          	<!-- list content -->
+          	<div class="container">         	
+          	<div th:if="${not #lists.isEmpty(assigneddevices)}">
+          	<h2>Assigned devices</h2>      	          	        	         
+            <table class="table table-stripped table-bordered">
+          	<tr>
+          	<!-- <th>id</th>  -->    
+          	<th>Customer Name</th>
+          	<th>Device Type</th> 
+          	<th>Problem</th>
+            <th>Status</th>
+          	<th>Date</th>
+          	<th>Expected Date of Delivery</th>
+          	<th>Assign to</th>  
+          	<th>Actions on Row</th>                		          	
+          	</tr>            	
+          	<tr  th:each="device : ${assigneddevices}">     
+          	<!-- <td  th:text="${device.id}"></td> -->    	
+          	<td  th:text="${device.customerName}"></td> 
+          	<td  th:text="${device.device_mgnt_id}"></td>       	         
+          	<td  th:text="${device.problem}"></td>    
+          	<td  th:text="${device.status}"></td>
+          	<td  th:text="${device.date}"></td>
+          	<td  th:text="${device.expectedDeliveryDate}"></td>
+          	<td  th:text="${device.assignedTechId}"></td>          	
+            <td><a href="assigned" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Edit </a></td>         	  
+          	</tr>
+          	</table>
+          	</div>           
+          	<!-- /list content -->            	       	          	
+        </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer th:include="common/testlayout::footer-fragment">          
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    <div th:include="common/testlayout::commonscripts-fragment">   	
+    </div>   
+  </body>
+</html>

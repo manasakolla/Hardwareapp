@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/recplayout::head-fragment">   
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">       
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/recplayout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/recplayout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->     
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->
+          	<tbody>          	
+          	<!-- list content -->
+          	<div class="container">         	
+          	<div th:if="${not #lists.isEmpty(deviceslist)}">
+          	<h2>Devices List</h2>          	          	        	
+          	<a href="/adddeviceform" th:href="@{/adddeviceform}"> <span class="btn btn-primary pull-right">Add device</span></a>
+            <table class="table table-stripped table-bordered">
+          	<tr>
+          	<!-- <th>id</th> -->     
+          	<th>Customer Name</th>
+          	<!-- <th>Device Type</th> --> 
+          	<th>Problem</th>
+            <th>Status</th>
+          	<th>Date</th>
+          	<th>Expected Date of Delivery</th>
+          	<!-- <th>Assign To</th> -->  
+          	<th>Actions</th>                		          	
+          	</tr>             	
+          	<tr  th:each="device : ${deviceslist}">     
+          	<!-- <td  th:text="${device.id}"></td> -->    	
+          	<td  th:text="${device.customerName}"></td> 
+          	<!-- <td  th:text="${device.device_mgnt_id}"></td>  -->      	         
+          	<td  th:text="${device.problem}"></td>    
+          	<td  th:text="${device.status}"></td>
+          	<td  th:text="${device.date}"></td>
+          	<td  th:text="${device.expectedDeliveryDate}"></td>
+          <!-- 	<td  th:text="${device.assignedTechId}"></td> -->
+            <td> <a href="viewcustomer.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a></td>    	         	  
+          	</tr>
+          	</table>
+          	</div>           
+          	<!-- /list content -->          	
+          	</div>
+          	</tbody>   	  	                 	
+        </div>    
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer th:include="common/recplayout::footer-fragment">         
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    <div th:include="common/recplayout::commonscripts-fragment">    	
+    </div>   
+  </body>
+</html>

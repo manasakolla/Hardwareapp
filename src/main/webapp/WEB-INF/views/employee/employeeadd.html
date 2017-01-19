@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/layout::head-fragment">
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">      
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/layout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/layout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->         	
+          <!-- <div class="right_col" role="main"> -->
+          <div class="">
+          	<span th:text="${message}"></span>
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Create Employee</h3>
+              </div>
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                     <button class="btn btn-default" type="button">Go!</button>
+                     </span>
+                      </input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                   <!--  <h2>Form validation <small>sub title</small></h2> -->
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>                      
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                  <form class="form-horizontal form-label-left" novalidate="novalidate" method="post" action="employeeadd" id="employeeadd">
+                     <!--  <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+                      </p> -->
+                   <!--    <span class="section">Personal Info</span> -->
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+                          </input>
+                        </div>
+                      </div>
+                     <!--  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="deptId">DeptId <span class="required">*</span>                       
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="deptId" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="deptId" required="required" type="number">
+                          </input>
+                        </div>
+                       </div> -->
+                 <!--  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="deptId">Dept Name<span class="required">*</span>
+                        </label>                       
+                        <div class="col-md-6 col-sm-6 col-xs-12">                                           
+                   <select id="deptId" name="deptId" class="form-control">
+                      <option value="">Choose</option>
+                       <option value="8">TECHNICIAN</option>
+                      <option value="10">RECEPTION</option>
+                      <option value="19">TESTER</option>  
+                      </select>                                                                          
+                        </div>
+                      </div>  -->
+                        <div class="item form-group">
+                <section class="control-label col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-6 col-sm-6" for="deptId">department </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="deptId" name="deptId" class="form-control input-xs"  th:value="${deptId}">
+                                <option value="">--Please Select</option>
+                                <option th:each="curr,rowStat : ${dept}" th:utext="${curr.name}" th:value="${curr.id}" th:attr="name=${curr.name}">admin</option>
+                                </select>
+                        </div>
+                    </div>
+                </section>
+            </div>
+             <!--   <section class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-5 col-sm-5">Dept Name <i class="fa fa-asterisk"></i></label>
+                            <div class="col-md-5 col-sm-5">
+                                <select id="dept"  class="form-control input-xs" th:field="*{dept.id}" method="get">
+                                	<option value="">Please Select</option>
+                                    <option th:each="dept,rowStat : ${departmentadds}" th:utext="${dept.role_name}" th:value="${dept.id}" th:attr="name=${dept.name}">Name</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>  -->
+                                          
+                         <!-- <div class="form-group">
+                                        <label class="col-md-3 control-label">Dept Id</label>
+                                        <div class="col-md-6">
+                                             <select class="form-control" th:field="*{deptId}">
+                    							<option  th:each="deptId : ${deptid}" th:value="${deptId}" th:utext="${deptId}" th:selected="${deptId eq 'Admin' ? 'selected' : ''}">Admin</option>
+                							</select>
+                                       </div>
+                                    </div> -->
+                      
+                    <!--   <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="department">Department <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="department" name="department" required="required" class="form-control col-md-7 col-xs-12">
+                          </input>
+                          <select id="department" name="department" class="form-control">
+                      <option value="">Choose</option>
+                       <option value="Receptionist">Receptionist</option>
+                       <option value="Employee">Employee</option>                    
+                      </select>                          
+                        </div>
+                      </div> -->
+                      
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="username" name="username"  required="required" class="form-control col-md-7 col-xs-12">
+                          </input>
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Password<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="password" id="password" name="password" data-validate-length="6,8" required="required" class="form-control col-md-7 col-xs-12">
+                          </input> 
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"> Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                           </input>
+                        </div>  
+                      </div> 
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           </div>
+        <!-- /page content -->			
+        <!-- footer content -->
+        <footer th:include="common/layout::footer-fragment">        
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    <div th:include="common/layout::commonscripts-fragment">    	
+    </div>  
+        <!-- </div> -->          	        	
+           
+     <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+     <!-- <script type="text/javascript" src="js/script.js"></script> -->
+     
+    <script>        
+         $().ready(function () {
+        	    $('#employeeadd').validate({ // initialize the plugin
+        	        rules: {
+        	            email: {
+        	                required: true,
+        	                email: true
+        	            }        	        }
+        	    });
+        	    messages: {
+        	    	name:"The field cannot be empty"
+        	    }
+
+        	});
+    </script>
+  </body>
+</html>
+                                	

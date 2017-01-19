@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/layout::head-fragment">
+  <link rel="stylesheet" href="css/screen.css"></link>
+  <link rel="stylesheet" href="css/styles.css"></link>
+	
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">       
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/layout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/layout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->          	
+          <!-- <div class="right_col" role="main"> -->
+          <div class="">
+          	<span th:text="${message}"></span>
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Device adding</h3>
+              </div>
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                       </span>
+                      </input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>                       
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <form class="form-horizontal form-label-left" novalidate="novalidate" method="post" action="deviceadding" id="deviceadding">
+
+                     <!--  <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+                      </p> -->
+                     <!--  <span class="section">Personal Info</span> -->
+                                                                             
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="deviceName">Device Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="deviceName" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="deviceName" required="required" type="text">                                                                    
+                          </input>
+                          <!-- <span id="deviceName.error">Device Name cannot be empty</span> -->
+                        </div>                        
+                      </div>  
+                      
+                      <!--  <div class="form-group">
+                        <label class="control-label col-md-3">Device Name</label>
+                          <div class="col-md-6">
+                           <div class="input-group">
+                            <span class="input-group-addon"><i class="icon-prepend fa fa-user"></i></span> 
+                           <input type="text" class="form-control" placeholder="Doe" name="deviceName" id="deviceName" th:field="*{deviceName}"/>
+                          </div>
+                         </div>
+                       </div>  -->
+                                          
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="description" name="description" class="form-control col-md-7 col-xs-12" required="required">                        
+                          </input> 
+                        </div>      
+                      </div>
+                      <!--  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="modifiedBy">Modified by <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="modifiedBy" name="modifiedBy"  required="required" class="form-control col-md-7 col-xs-12">
+                          </input>
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="modifiedDate">Modified date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="modifiedDate" name="modifiedDate" required="required"  class="form-control col-md-7 col-xs-12">
+                          </input>
+                        </div> 
+                      </div> -->
+                   <!--    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="createdBy">Created by <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="createdBy" name="createdBy" required="required" class="form-control col-md-7 col-xs-12">
+                           </input>
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="createdDate">Created date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="createdDate" type="text" name="createdDate" required="required"  class=" form-control col-md-7 col-xs-12">
+                          </input>
+                        </div>                      
+                      </div>    -->                
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->          	        	
+        </div>                
+            <!-- /page content -->
+			
+        <!-- footer content -->
+        <footer th:include="common/layout::footer-fragment">         
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    <div th:include="common/layout::commonscripts-fragment">    	
+    </div>   
+    <!-- <script src="../lib/jquery.js"></script> -->
+	<!-- <script src="../dist/jquery.validate.js"></script> -->
+	<!-- <script src="../../../../resources/js/notification/SmartNotification.min.js" ></script> -->
+     <!-- JQUERY VALIDATE -->
+     <!-- <script src="../../../../resources/js/plugin/jquery-validate/jquery.validate.min.js" ></script> -->
+     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+     
+     <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+     <!-- <script type="text/javascript" src="js/script.js"></script> -->
+    <script>        
+         $().ready(function () {
+        	    $('#deviceadding').validate({ // initialize the plugin
+        	        rules: {
+        	            deviceName: {
+        	                required: true,
+        	                deviceName: true
+        	            }        	        }
+        	    });
+        	    messages: {
+        	    	deviceName:"The text box cannot be empty"
+        	    }
+
+        	});
+    </script>
+    
+  </body>
+</html>

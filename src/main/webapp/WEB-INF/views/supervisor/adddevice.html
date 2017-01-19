@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:include="common/recplayout::head-fragment"> 
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">       
+        <!-- side navigation -->
+        <div class="col-md-3 left_col" id="sidebar" th:include="common/recplayout::sidebar-fragment">
+        </div>
+		<!-- side navigation -->		
+        <!-- top navigation -->
+        <div class="top_nav" th:include="common/recplayout::topnav-fragment">
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main" id="main-content">
+          <!-- top tiles -->        	                             	
+          	<div class="">
+          	<span th:text="${message}"></span>
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Device adding</h3>
+              </div>
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                       </span>                     
+                      </input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>                       
+                      </li>
+                      <li>
+                       <a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <form class="form-horizontal form-label-left" novalidate="novalidate" method="post" action="adddevice" id="adddevice">
+                     <!--  <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+                      </p> -->
+                      <!-- <span class="section">Personal Info</span> -->
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customerName">Customer Name<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="customerName" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="customerName" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+                          </input>
+                        </div>
+                      </div>                      
+                       <!--  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="device_mgnt_id"> Device Type<span class="required">*</span>
+                        </label>                       
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="devicetype" name="devicetype" required="required" class="form-control col-md-7 col-xs-12">
+                       </input>                       
+                      <select id="device_mgnt_id" name="device_mgnt_id" class="form-control">
+                      <option value="">Choose</option>
+                       <option value="4">Moniter</option>                      
+                      <option value="9">Speaker</option> 
+                      <option value="10">CPU</option>
+                      <option value="8">Printer</option>
+                      </select>                                                                                                                 
+                        </div>
+                      </div>   -->
+                       <div class="item form-group">
+                <section class="control-label col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-6 col-sm-6" for="id">Device Type </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="id" name="device_mgnt_id" class="form-control input-xs"  th:value="${device_mgnt_id}">
+                                <option value="">--Please Select</option>
+                                <option th:each="curr,rowStat : ${devicesadmin}" th:utext="${curr.deviceName}" th:value="${curr.id}" th:attr="deviceName=${curr.deviceName}">Device Type</option>
+                                </select>
+                        </div>
+                    </div>
+                </section>
+            </div>                                                                                                    
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="problem">Problem<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="problem" name="problem" required="required" class="form-control col-md-7 col-xs-12">
+                          </input> 
+                        </div> 
+                      </div>
+                     <!--  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="status" name="status" required="required"  class="form-control col-md-7 col-xs-12">
+                          </input>
+                        </div>
+                      </div> -->                   
+                        <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status"> status<span class="required">*</span>
+                        </label>                       
+                       <div class="col-md-6 col-sm-6 col-xs-12">                      
+                      <select  id="status" name="status" class="form-control">
+                      <option value="">Choose</option>
+                       <option value="ASSIGNED">ASSIGNED</option>
+                      <option value="REPAIR DONE">REPAIR DONE</option>
+                      <!-- <option value="Moniter">Moniter</option>  -->
+                      </select>                                                                                                                 
+                        </div>
+                      </div>                                                                     
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="date">Date<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="datepicker" name="datepicker" required="required" class="form-control col-md-7 col-xs-12">
+                           </input>                           
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="expectedDeliveryDate">Expected Date of Delivery<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="datepicker" type="date" name="datepicker" required="required" class="form-control col-md-7 col-xs-12">
+                          </input>
+                        </div>                        
+                      </div>                      
+                    <!--   <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="trackId">Track id <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="trackId" type="text" name="trackId" required="required"  class=" form-control col-md-7 col-xs-12">
+                          </input>
+                        </div>                       
+                      </div>  -->                                                   
+                    <!--   <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="assignedTechId">Assigned To<span class="required">*</span>
+                      </label>                       
+                      <div class="control-label col-md-6 col-sm-6 col-xs-12">                      
+                      <select  id="assignedTechId" name="assignedTechId" class="form-control">
+                       <option value="">Choose</option>
+                       <option value="8">John</option>  
+                       <option value="14">Smith</option>
+                       <option value="21">Ramesh</option>                     
+                      </select>     
+                     </div>                                                                                                                
+                     </div>   -->
+                      <div class="item form-group">
+                <section class="control-label col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-6 col-sm-6" for="id">Assign to </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="assignedTechId" name="assignedTechId" class="form-control input-xs"  th:value="${assignedTechId}">
+                                <option value="">--Please Select</option>
+                                <option th:each="curr,rowStat : ${users}" th:utext="${curr.name}" th:value="${curr.id}" th:attr="user=${curr.name}">Device Type</option>
+                                </select>
+                        </div>
+                    </div>
+                </section>
+            </div>      
+                                                                           
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                      </form>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->          	        	
+        </div>     	
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer th:include="common/recplayout::footer-fragment">         
+        </footer>
+        <!-- /footer content -->
+     <div th:include="common/recplayout::commonscripts-fragment">  	
+    </div>  
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+     <!-- <script type="text/javascript" src="js/script.js"></script> -->
+    <script>        
+         $().ready(function () {
+        	    $('#adddevice').validate({ // initialize the plugin
+        	        rules: {
+        	            customerName: {
+        	                required: true,
+        	                customerName: true
+        	            }        	        }
+        	    });
+        	    messages: {
+        	    	customerName:"The text box cannot be empty"
+        	    }
+        	    
+        	    $("#datepicker").datepicker({
+        	    	  changeMonth:true,
+        	    	  changeYear:true
+        	    	  });
+
+        	});
+    </script>
+  </body>
+</html>
